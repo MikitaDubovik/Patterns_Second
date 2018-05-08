@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import sample.Mediator.Components.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="765.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.Display">
+<children>
+    <TabPane layoutX="1.0" layoutY="-58.0" prefHeight="765.0" prefWidth="1500.0" stylesheets="@../style.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+            <Tab text="График распределения задач">
+                <content>
+                    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="679.0" prefWidth="1339.0">
+                        <children>
+                            <LineChart fx:id="lineChart" layoutX="6.0" layoutY="68.0" prefHeight="399.0" prefWidth="630.0" style="margin: 100px;" AnchorPane.bottomAnchor="212.0">
+                                <xAxis>
+                                    <CategoryAxis label="Цель" fx:id="xAxis" />
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis fx:id="yAxis" label="Количество людей" side="LEFT" />
+                                </yAxis>
+                            </LineChart>
+                            <BarChart fx:id="barChart" layoutX="669.0" layoutY="68.0" prefHeight="400.0" prefWidth="636.0">
+                                <xAxis>
+                                    <CategoryAxis label="Цель" side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis label="Трудоемкость" side="LEFT" />
+                                </yAxis>
+                            </BarChart>
+                            <Label layoutX="85.0" layoutY="25.0" text="Распределение людей по целям проекта " />
+                            <Label layoutX="750.0" layoutY="25.0" text="Распределение трудоемкости по целям проекта " />
+                        </children>
+                    </AnchorPane>
+                </content>
+            </Tab>
+            <Tab text="Табличная сводка">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="773.0" prefWidth="1500.0">
+                        <children>
+                            <AnchorPane layoutX="39.0" layoutY="26.0" prefHeight="503.0" prefWidth="790.0">
+                                <children>
+                                    <TableView fx:id="tableTask" prefHeight="503.0" prefWidth="940.0">
+                                        <columns>
+                                            <TableColumn fx:id="projectName" prefWidth="148.0" text="Название проекта" />
+                                            <TableColumn fx:id="aim" minWidth="5.0" prefWidth="146.0" text="Название задачи" />
+                                            <TableColumn fx:id="aimId" minWidth="8.0" prefWidth="53.0" text="ID" />
+                                            <TableColumn fx:id="planedHours" prefWidth="149.0" text="Трудоемкость" />
+                                            <TableColumn fx:id="people" minWidth="0.0" prefWidth="96.0" text="Ресурс" />
+                                    <TableColumn fx:id="factHours" minWidth="5.0" prefWidth="179.0" text="Затраченное время" />
+                                    <TableColumn fx:id="hoursLeft" prefWidth="168.0" text="Оставшиеся затраты" />
+                                        </columns>
+                                    </TableView>
+                                </children>
+                            </AnchorPane>
+                            <Button fx:id="refresh" layoutX="1088.0" layoutY="594.0" mnemonicParsing="false" onAction="#onRefresh" styleClass="buttonOther" text="Обновить" />
+                            <ChooseNameProj fx:id="chooseNameProj" layoutX="1050.0" layoutY="68.0" prefHeight="44.0" prefWidth="185.0" />
+                            <Label layoutX="1034.0" layoutY="26.0" prefHeight="30.0" prefWidth="266.0" text="Выберите название проекта" />
+                            <ChooseNameTask fx:id="chooseNameTask" layoutX="1051.0" layoutY="165.0" prefHeight="44.0" prefWidth="184.0" />
+                            <Label layoutX="1031.0" layoutY="128.0" prefHeight="30.0" prefWidth="253.0" text="Выберите название задачи" />
+                        <Label layoutX="1031.0" layoutY="226.0" prefHeight="30.0" prefWidth="123.0" text="Выберите ID" />
+                        <ChooseId fx:id="chooseId" layoutX="1051.0" layoutY="266.0" prefHeight="44.0" prefWidth="185.0" />
+                        <Label layoutX="1032.0" layoutY="323.0" prefHeight="30.0" prefWidth="224.0" text="Выберите трудоемкость" />
+                        <ChoosePlanedHours fx:id="choosePlanedHours" layoutX="1050.0" layoutY="359.0" prefHeight="44.0" prefWidth="185.0" />
+                        <TextField fx:id="number" layoutX="1034.0" layoutY="535.0" prefHeight="44.0" prefWidth="201.0" promptText="Количество людей">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </TextField>
+                        <ChooseFactHours fx:id="chooseFactHours" layoutX="1052.0" layoutY="464.0" prefHeight="44.0" prefWidth="185.0" />
+                        <Label layoutX="1034.0" layoutY="428.0" prefHeight="30.0" prefWidth="284.0" text="Выберите затраченное время" />
+                        <Button fx:id="saveButton" layoutX="1042.0" layoutY="681.0" mnemonicParsing="false" onAction="#onSave" styleClass="buttonOther" text="Сохранить фильтры" />
+                        </children>
+                    </AnchorPane>
+                </content>
+            </Tab>
+            <Tab text="Добавление задания">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="hoursLeftField" layoutX="1110.0" layoutY="346.0" prefHeight="44.0" prefWidth="156.0" />
+                        <TextField fx:id="factHoursField" layoutX="837.0" layoutY="348.0" prefHeight="43.0" prefWidth="161.0" />
+                        <TextField fx:id="peopleField" layoutX="562.0" layoutY="346.0" prefHeight="44.0" prefWidth="171.0" />
+                        <TextField fx:id="planedHoursFields" layoutX="316.0" layoutY="346.0" prefHeight="45.0" prefWidth="170.0" />
+                        <TextField fx:id="idField" layoutX="107.0" layoutY="346.0" prefHeight="45.0" prefWidth="161.0" />
+                        <Button fx:id="addButton" layoutX="586.0" layoutY="519.0" mnemonicParsing="false" onAction="#onAdd" prefHeight="71.0" prefWidth="147.0" styleClass="buttonOther" text="Добавить" />
+                        <Label layoutX="664.0" layoutY="124.0" prefHeight="30.0" prefWidth="253.0" text="Выберите название задачи" />
+                        <Label layoutX="361.0" layoutY="120.0" prefHeight="38.0" prefWidth="269.0" text="Выберите название проекта" />
+                        <ChoiceBox fx:id="choiceProjName" layoutX="421.0" layoutY="186.0" prefWidth="150.0" />
+                        <ChoiceBox fx:id="choiceTaskName" layoutX="715.0" layoutY="186.0" prefWidth="150.0" />
+                        <Label layoutX="136.0" layoutY="286.0" prefHeight="38.0" prefWidth="103.0" text="Введите ID" />
+                        <Label layoutX="295.0" layoutY="286.0" prefHeight="38.0" prefWidth="212.0" text="Введите трудоемкость" />
+                        <Label layoutX="512.0" layoutY="286.0" prefHeight="38.0" prefWidth="253.0" text="Введите количество людей" />
+                        <Label layoutX="784.0" layoutY="286.0" prefHeight="38.0" prefWidth="267.0" text="Введите затраченное время" />
+                        <Label layoutX="1060.0" layoutY="286.0" prefHeight="38.0" prefWidth="257.0" text="Введите оставшиеся время" />
+                     </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+    </TabPane>
+</children>
+</AnchorPane>

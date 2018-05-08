@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<GridPane alignment="center" hgap="10" styleClass="style.css" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.Controller">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <Pane prefHeight="209.0" prefWidth="311.0">
+         <children>
+            <Button fx:id="buttonCsv" layoutX="49.0" layoutY="49.0" mnemonicParsing="false" onAction="#ParseCsv" prefHeight="56.0" prefWidth="82.0" text="CSV">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonXml" layoutX="185.0" layoutY="49.0" mnemonicParsing="false" onAction="#ParseXml" prefHeight="56.0" prefWidth="82.0" text="XML">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonExit" layoutX="242.0" layoutY="170.0" mnemonicParsing="false" onAction="#Exit" text="Выйти" />
+         </children>
+      </Pane>
+   </children>
+</GridPane>
